@@ -5,6 +5,7 @@ import { styles } from "./styles";
 import { Header } from "../../components/Header";
 import { Tabs } from "../../components/Tabs";
 import { MaterialIcons } from "@expo/vector-icons";
+import { Menu } from "../../components/Menu";
 
 export function Main() {
   return (
@@ -14,6 +15,8 @@ export function Main() {
         <Header />
 
         <View style={styles.content}>
+          <Menu/>
+
           <View style={styles.card}>
             <View style={styles.cardHeader}>
               <MaterialIcons name="attach-money" size={28} color="#665" />

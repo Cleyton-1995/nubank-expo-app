@@ -21,6 +21,10 @@ export const styles = StyleSheet.create({
     marginTop: 0,
     marginHorizontal: 20,
     height: "100%",
+    position: "absolute",
+    left: 0,
+    right: 0,
+    top: 380,
   },
   cardHeader: {
     flexDirection: "row",
