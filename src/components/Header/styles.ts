@@ -5,5 +5,19 @@ export const styles = StyleSheet.create({
    alignItems: 'center',
    paddingTop: 40,
    paddingBottom: 30,
-  }
+   paddingHorizontal: 0
+  },
+  top: {
+   flexDirection: "row",
+   alignItems: "center",
+   marginBottom: 10,
+  },
+  logo: {},
+  title: {
+   fontSize: 18,
+   color: "#FFFFFF",
+   fontWeight: "bold",
+   marginLeft: 8
+  },
+  icon: {},
 });
