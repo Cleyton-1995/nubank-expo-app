@@ -28,4 +28,19 @@ export const styles = StyleSheet.create({
     color: "#FFFFFF",
     marginLeft: 20,
   },
+  signOutButton:{
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: "rgba(255, 255, 255, 0.8)",
+    borderRadius: 4,
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 12,
+    marginTop: 15
+
+  },
+  signOutButtonText:{
+    color: "#FFFFFF",
+    fontWeight: "bold",
+    fontSize: 13,
+  },
 });
