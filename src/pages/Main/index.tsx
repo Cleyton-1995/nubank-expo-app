@@ -31,21 +31,27 @@ export function Main() {
 
   function onHandlerStateChanged(event: any) {
     if (event.nativeEvent.oldState === State.ACTIVE) {
-      let newOffset = event.nativeEvent.translationY + offset;
+      let opened = false;
+      const { translationY } = event.nativeEvent;
 
-      if (newOffset < 0) {
-        newOffset = 0;
-      } else if (newOffset > 380) {
-        newOffset = 380;
+      offset += translationY;
+
+      if (translationY >= 100) {
+        opened = true;
+      } else {
+        translateY.setValue(offset);
+        translateY.setOffset(0);
+        offset = 0;
       }
 
       Animated.timing(translateY, {
-        toValue: newOffset,
+        toValue: opened ? 380 : 0,
         duration: 200,
         useNativeDriver: true,
       }).start(() => {
-        offset = newOffset;
-        translateY.setValue(offset);
+        offset = opened ? 380 : 0;
+        translateY.setOffset(offset);
+        translateY.setValue(0);
       });
     }
   }
@@ -57,7 +63,7 @@ export function Main() {
         <Header />
 
         <View style={styles.content}>
-          <Menu translateY={translateY}  />
+          <Menu translateY={translateY} />
 
           <PanGestureHandler
             onGestureEvent={animatedEvent}
@@ -101,7 +107,7 @@ export function Main() {
           </PanGestureHandler>
         </View>
 
-        <Tabs />
+        <Tabs translateY={translateY} />
       </View>
     </GestureHandlerRootView>
   );
