@@ -10,10 +10,13 @@ import {
   GestureHandlerRootView,
   PanGestureHandler,
   PanGestureHandlerGestureEvent,
+  State,
 } from "react-native-gesture-handler";
 
 export function Main() {
   const translateY = new Animated.Value(0);
+
+  let offset = 0;
 
   const animatedEvent = Animated.event<PanGestureHandlerGestureEvent>(
     [
@@ -26,7 +29,26 @@ export function Main() {
     { useNativeDriver: true }
   );
 
-  function onHandlerStateChanged(event: any) {}
+  function onHandlerStateChanged(event: any) {
+    if (event.nativeEvent.oldState === State.ACTIVE) {
+      let newOffset = event.nativeEvent.translationY + offset;
+
+      if (newOffset < 0) {
+        newOffset = 0;
+      } else if (newOffset > 380) {
+        newOffset = 380;
+      }
+
+      Animated.timing(translateY, {
+        toValue: newOffset,
+        duration: 200,
+        useNativeDriver: true,
+      }).start(() => {
+        offset = newOffset;
+        translateY.setValue(offset);
+      });
+    }
+  }
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
