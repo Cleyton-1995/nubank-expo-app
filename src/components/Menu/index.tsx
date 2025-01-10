@@ -1,16 +1,21 @@
 import React from "react";
-import { ScrollView, Text, TouchableOpacity, View } from "react-native";
+import { Animated, ScrollView, Text, TouchableOpacity, View } from "react-native";
 
 import { styles } from "./styles";
 import QRCode from "react-native-qrcode-svg";
 import { MaterialIcons } from "@expo/vector-icons";
 
-export function Menu() {
+export function Menu({translateY}: {translateY: Animated.Value}) {
   return (
-    <ScrollView
+    <Animated.ScrollView
       showsVerticalScrollIndicator={false}
-      // contentContainerStyle={{ alignItems: "center" }}
-      style={styles.container}
+      style={[styles.container, {
+        opacity: translateY.interpolate({
+          inputRange: [0, 150],
+          outputRange: [0, 1],
+          extrapolate: "clamp"
+        })
+      }]}
     >
       <View style={styles.code}>
         <QRCode
@@ -50,6 +55,6 @@ export function Menu() {
       >
         <Text style={styles.signOutButtonText}>SAIR DO APP</Text>
       </TouchableOpacity>
-    </ScrollView>
+    </Animated.ScrollView>
   );
 }

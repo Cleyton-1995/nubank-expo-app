@@ -35,7 +35,7 @@ export function Main() {
         <Header />
 
         <View style={styles.content}>
-          <Menu/>
+          <Menu translateY={translateY}  />
 
           <PanGestureHandler
             onGestureEvent={animatedEvent}
