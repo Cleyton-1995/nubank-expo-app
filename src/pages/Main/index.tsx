@@ -15,12 +15,8 @@ export function Main() {
         <Header />
 
         <View style={styles.content}>
-<<<<<<< HEAD
           <Menu/>
-=======
-          <Menu />
->>>>>>> 78fb837dc7855d1ac1430c944fe91f12c15e05b8
-
+          
           <View style={styles.card}>
             <View style={styles.cardHeader}>
               <MaterialIcons name="attach-money" size={28} color="#665" />

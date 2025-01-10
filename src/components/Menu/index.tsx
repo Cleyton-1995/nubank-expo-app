@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React from "react";
 import { ScrollView, View } from "react-native";
 
@@ -22,17 +21,3 @@ export function Menu() {
     </ScrollView>
   );
 }
-=======
-import React from 'react';
-import { View } from 'react-native';
-
-import { styles } from './styles';
-
-export function Menu() {
-  return (
-    <View style={styles.container}>
-
-    </View>
-  );
-}
->>>>>>> 78fb837dc7855d1ac1430c944fe91f12c15e05b8
